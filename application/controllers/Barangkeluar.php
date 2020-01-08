@@ -44,14 +44,15 @@ class Barangkeluar extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['title'] = "Barang Keluar";
             $data['barang'] = $this->admin->get('barang', null, ['stok >' => 0]);
+            $data['bidang'] = $this->admin->get('bidang');
 
             // Mendapatkan dan men-generate kode transaksi barang keluar
-            $kode = 'T-BK-' . date('ymd');
-            $kode_terakhir = $this->admin->getMax('barang_keluar', 'id_barang_keluar', $kode);
-            $kode_tambah = substr($kode_terakhir, -5, 5);
-            $kode_tambah++;
-            $number = str_pad($kode_tambah, 5, '0', STR_PAD_LEFT);
-            $data['id_barang_keluar'] = $kode . $number;
+            // $kode = 'T-BK-' . date('ymd');
+            // $kode_terakhir = $this->admin->getMax('barang_keluar', 'id_barang_keluar', $kode);
+            // $kode_tambah = substr($kode_terakhir, -5, 5);
+            // $kode_tambah++;
+            // $number = str_pad($kode_tambah, 5, '0', STR_PAD_LEFT);
+            // $data['id_barang_keluar'] = $kode . $number;
 
             $this->template->load('templates/dashboard', 'barang_keluar/add', $data);
         } else {
@@ -71,7 +72,7 @@ class Barangkeluar extends CI_Controller
     public function delete($getId)
     {
         $id = encode_php_tags($getId);
-        if ($this->admin->delete('barang_keluar', 'id_barang_keluar', $id)) {
+        if ($this->admin->delete('barang_keluar', 'id', $id)) {
             set_pesan('data berhasil dihapus.');
         } else {
             set_pesan('data gagal dihapus.', false);

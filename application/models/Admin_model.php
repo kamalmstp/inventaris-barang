@@ -31,9 +31,9 @@ class Admin_model extends CI_Model
     public function getUsers($id)
     {
         /**
-         * ID disini adalah untuk data yang tidak ingin ditampilkan. 
-         * Maksud saya disini adalah 
-         * tidak ingin menampilkan data user yang digunakan, 
+         * ID disini adalah untuk data yang tidak ingin ditampilkan.
+         * Maksud saya disini adalah
+         * tidak ingin menampilkan data user yang digunakan,
          * pada managemen data user
          */
         $this->db->where('id_user !=', $id);
@@ -77,6 +77,7 @@ class Admin_model extends CI_Model
         $this->db->select('*');
         $this->db->join('user u', 'bk.user_id = u.id_user');
         $this->db->join('barang b', 'bk.barang_id = b.id_barang');
+        $this->db->join('bidang d', 'bk.bidang_id = d.id_bidang');
         $this->db->join('satuan s', 'b.satuan_id = s.id_satuan');
         if ($limit != null) {
             $this->db->limit($limit);
@@ -90,6 +91,50 @@ class Admin_model extends CI_Model
         }
         $this->db->order_by('id_barang_keluar', 'DESC');
         return $this->db->get('barang_keluar bk')->result_array();
+    }
+
+    public function getPemeliharaan($limit = null, $id_barang = null, $range = null)
+    {
+        $this->db->select('*');
+        $this->db->join('supplier sp', 'p.supplier_id = sp.id_supplier');
+        $this->db->join('barang b', 'p.barang_id = b.id_barang');
+        if ($limit != null) {
+            $this->db->limit($limit);
+        }
+
+        if ($id_barang != null) {
+            $this->db->where('id_barang', $id_barang);
+        }
+
+        if ($range != null) {
+            $this->db->where('tanggal_masuk' . ' >=', $range['mulai']);
+            $this->db->where('tanggal_masuk' . ' <=', $range['akhir']);
+        }
+
+        $this->db->order_by('id', 'DESC');
+        return $this->db->get('pemeliharaan p')->result_array();
+    }
+
+    public function getStok($limit = null, $id_barang = null, $range = null)
+    {
+        $this->db->select('*');
+        $this->db->join('jenis j', 'br.jenis_id = j.id_jenis');
+        $this->db->join('satuan s', 'br.satuan_id = s.id_satuan');
+        if ($limit != null) {
+            $this->db->limit($limit);
+        }
+
+        if ($id_barang != null) {
+            $this->db->where('id_barang', $id_barang);
+        }
+
+        if ($range != null) {
+            $this->db->where('tanggal_masuk' . ' >=', $range['mulai']);
+            $this->db->where('tanggal_masuk' . ' <=', $range['akhir']);
+        }
+
+        $this->db->order_by('id_barang', 'DESC');
+        return $this->db->get('barang br')->result_array();
     }
 
     public function getMax($table, $field, $kode = null)

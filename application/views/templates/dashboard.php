@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title><?= $title; ?> | Aplikasi Pengadaan Barang</title>
+    <title><?= $title; ?> | DPMPTSP Tanah Laut</title>
 
     <!-- Custom fonts for this template-->
     <link href="<?= base_url(); ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -46,7 +46,7 @@
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-university"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Pengadaan Barang</div>
+                <div class="sidebar-brand-text mx-3">DPMPTSP Tanah Laut</div>
             </a>
 
             <!-- Nav Item - Dashboard -->
@@ -70,6 +70,12 @@
                 <a class="nav-link pb-0" href="<?= base_url('supplier'); ?>">
                     <i class="fas fa-fw fa-users"></i>
                     <span>Supplier</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link pb-0" href="<?= base_url('bidang'); ?>">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Data Bidang</span>
                 </a>
             </li>
 
@@ -113,6 +119,13 @@
                 </a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('pemeliharaan'); ?>">
+                    <i class="fas fa-fw fa-file"></i>
+                    <span>Pemeliharaan</span>
+                </a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider">
 
@@ -122,29 +135,35 @@
             </div>
 
             <li class="nav-item">
+              <a class="nav-link pb-0" href="<?= base_url('laporanstok'); ?>">
+                <i class="fas fa-fw fa-print"></i>
+                <span> Laporan Stok Barang</span>
+              </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="<?= base_url('laporan'); ?>">
                     <i class="fas fa-fw fa-print"></i>
-                    <span>Cetak Laporan</span>
+                    <span> Laporan Transaksi</span>
                 </a>
             </li>
 
-            <?php if (is_admin()) : ?>
+            <!-- <?php if (is_admin()) : ?> -->
                 <!-- Divider -->
-                <hr class="sidebar-divider">
+                <!-- <hr class="sidebar-divider"> -->
 
                 <!-- Heading -->
-                <div class="sidebar-heading">
+                <!-- <div class="sidebar-heading">
                     Settings
-                </div>
+                </div> -->
 
                 <!-- Nav Item -->
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('user'); ?>">
                         <i class="fas fa-fw fa-user-plus"></i>
                         <span>User Management</span>
                     </a>
-                </li>
-            <?php endif; ?>
+                </li> -->
+            <!-- <?php endif; ?> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -227,7 +246,7 @@
             <footer class="sticky-footer bg-light">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Aplikasi Pengadaan Barang 2019 &bull; by <?= anchor('https://www.arfan.id', 'Arfan.id'); ?></span>
+                        <span>Copyright &copy; 2019 &bull; DPMPTSP Tanah Laut</span>
                     </div>
                 </div>
             </footer>

@@ -36,12 +36,12 @@ class Barangmasuk extends CI_Controller
             $data['barang'] = $this->admin->get('barang');
 
             // Mendapatkan dan men-generate kode transaksi barang masuk
-            $kode = 'T-BM-' . date('ymd');
-            $kode_terakhir = $this->admin->getMax('barang_masuk', 'id_barang_masuk', $kode);
-            $kode_tambah = substr($kode_terakhir, -5, 5);
-            $kode_tambah++;
-            $number = str_pad($kode_tambah, 5, '0', STR_PAD_LEFT);
-            $data['id_barang_masuk'] = $kode . $number;
+            // $kode = 'T-BM-' . date('ymd');
+            // $kode_terakhir = $this->admin->getMax('barang_masuk', 'id_barang_masuk', $kode);
+            // $kode_tambah = substr($kode_terakhir, -5, 5);
+            // $kode_tambah++;
+            // $number = str_pad($kode_tambah, 5, '0', STR_PAD_LEFT);
+            // $data['id_barang_masuk'] = $kode . $number;
 
             $this->template->load('templates/dashboard', 'barang_masuk/add', $data);
         } else {
@@ -61,7 +61,7 @@ class Barangmasuk extends CI_Controller
     public function delete($getId)
     {
         $id = encode_php_tags($getId);
-        if ($this->admin->delete('barang_masuk', 'id_barang_masuk', $id)) {
+        if ($this->admin->delete('barang_masuk', 'id', $id)) {
             set_pesan('data berhasil dihapus.');
         } else {
             set_pesan('data gagal dihapus.', false);

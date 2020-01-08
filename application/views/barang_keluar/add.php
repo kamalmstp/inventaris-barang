@@ -22,11 +22,11 @@
             </div>
             <div class="card-body">
                 <?= $this->session->flashdata('pesan'); ?>
-                <?= form_open('', [], ['id_barang_keluar' => $id_barang_keluar, 'user_id' => $this->session->userdata('login_session')['user']]); ?>
+                <?= form_open('', [], ['user_id' => $this->session->userdata('login_session')['user']]); ?>
                 <div class="row form-group">
-                    <label class="col-md-4 text-md-right" for="id_barang_keluar">ID Transaksi Barang Keluar</label>
+                    <label class="col-md-4 text-md-right" for="id_barang_keluar">No Surat Dasar Pengeluaran</label>
                     <div class="col-md-4">
-                        <input value="<?= $id_barang_keluar; ?>" type="text" readonly="readonly" class="form-control">
+                        <input value="" name="id_barang_keluar" type="text" class="form-control">
                         <?= form_error('id_barang_keluar', '<small class="text-danger">', '</small>'); ?>
                     </div>
                 </div>
@@ -52,6 +52,23 @@
                             </div>
                         </div>
                         <?= form_error('barang_id', '<small class="text-danger">', '</small>'); ?>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <label class="col-md-4 text-md-right" for="barang_id">Bidang</label>
+                    <div class="col-md-5">
+                        <div class="input-group">
+                            <select name="bidang_id" id="bidang_id" class="custom-select">
+                                <option value="" selected disabled>Pilih Bidang</option>
+                                <?php foreach ($bidang as $bd) : ?>
+                                    <option value="<?= $bd['id_bidang'] ?>"><?= $bd['id_bidang'] . ' | ' . $bd['nama_bidang'] ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <div class="input-group-append">
+                                <a class="btn btn-primary" href="<?= base_url('bidang/add'); ?>"><i class="fa fa-plus"></i></a>
+                            </div>
+                        </div>
+                        <?= form_error('bidang_id', '<small class="text-danger">', '</small>'); ?>
                     </div>
                 </div>
                 <div class="row form-group">
