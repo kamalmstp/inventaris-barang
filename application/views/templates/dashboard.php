@@ -147,10 +147,16 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?= base_url('laporanpemeliharaan'); ?>">
+                <a class="nav-link pb-0" href="<?= base_url('laporanpemeliharaan'); ?>">
                     <i class="fas fa-fw fa-print"></i>
                     <span> Laporan Pemeliharaan</span>
                 </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="<?= base_url('laporansupplier'); ?>">
+                <i class="fas fa-fw fa-print"></i>
+                <span> Laporan Supplier</span>
+              </a>
             </li>
 
             <!-- <?php if (is_admin()) : ?> -->
