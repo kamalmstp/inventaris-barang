@@ -11,7 +11,7 @@
                     <div class="col-lg-6">
                         <div class="p-5">
                             <div class="text-center mb-4">
-                                <h1 class="h4 text-gray-900">Aplikasi Pengadaan Barang</h1>
+                                <h1 class="h4 text-gray-900">Aplikasi Pengadaan Barang <br> DPMPTSP Tanah Laut</h1>
                                 <span class="text-muted">Login</span>
                             </div>
                             <?= $this->session->flashdata('pesan'); ?>
@@ -28,7 +28,6 @@
                                 Login
                             </button>
                             <div class="text-center mt-4">
-                                <a class="small" href="<?= base_url('register') ?>">Buat Akun!</a>
                             </div>
                             <?= form_close(); ?>
                         </div>

@@ -20,7 +20,7 @@
 
     <style>
         .bg-login-image {
-            background-image: url("<?= base_url('assets/img/finance_0bdk.svg'); ?>");
+            background-image: url("<?= base_url('assets/logo.jpeg'); ?>");
             background-repeat: no-repeat;
             background-size: 80%;
         }

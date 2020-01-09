@@ -38,6 +38,8 @@
                 $no = 1;
                 if ($stok) :
                     foreach ($stok as $bm) :
+                      $masuk = $this->db->select('sum(jumlah_masuk) as total_masuk')->where('barang_id' . '=', $bm['id_barang'])->get('barang_masuk')->row();
+                      $keluar = $this->db->select('sum(jumlah_keluar) as total_keluar')->where('barang_id' . '=', $bm['id_barang'])->get('barang_keluar')->row();
                         ?>
                         <tr>
                             <td><?= $no++; ?></td>
@@ -45,8 +47,8 @@
                             <td><?= $bm['nama_jenis']; ?></td>
                             <td><?= $bm['nama_satuan']; ?></td>
                             <td><?= $bm['harga']; ?></td>
-                            <td></td>
-                            <td></td>
+                            <td><?= $masuk->total_masuk; ?></td>
+                            <td><?= $keluar->total_keluar; ?></td>
                             <td><?= $bm['stok']; ?></td>
                         </tr>
                     <?php endforeach; ?>

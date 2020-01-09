@@ -44,7 +44,7 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex text-white align-items-center bg-primary justify-content-center" href="">
                 <div class="sidebar-brand-icon">
-                    <i class="fas fa-university"></i>
+                    <img src="<?= base_url('assets/logo.jpeg'); ?>" alt="" width="30px">
                 </div>
                 <div class="sidebar-brand-text mx-3">DPMPTSP Tanah Laut</div>
             </a>
@@ -144,6 +144,12 @@
                 <a class="nav-link" href="<?= base_url('laporan'); ?>">
                     <i class="fas fa-fw fa-print"></i>
                     <span> Laporan Transaksi</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('laporanpemeliharaan'); ?>">
+                    <i class="fas fa-fw fa-print"></i>
+                    <span> Laporan Pemeliharaan</span>
                 </a>
             </li>
 

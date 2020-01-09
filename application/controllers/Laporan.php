@@ -57,10 +57,10 @@ class Laporan extends CI_Controller
         if ($table_ == 'barang_masuk') :
             $pdf->Cell(10, 7, 'No.', 1, 0, 'C');
             $pdf->Cell(25, 7, 'Tgl Masuk', 1, 0, 'C');
-            $pdf->Cell(35, 7, 'ID Transaksi', 1, 0, 'C');
+            $pdf->Cell(35, 7, 'No Penerimaan', 1, 0, 'C');
             $pdf->Cell(55, 7, 'Nama Barang', 1, 0, 'C');
-            $pdf->Cell(40, 7, 'Supplier', 1, 0, 'C');
             $pdf->Cell(30, 7, 'Jumlah Masuk', 1, 0, 'C');
+            $pdf->Cell(40, 7, 'Supplier', 1, 0, 'C');
             $pdf->Ln();
 
             $no = 1;
@@ -70,15 +70,16 @@ class Laporan extends CI_Controller
                 $pdf->Cell(25, 7, $d['tanggal_masuk'], 1, 0, 'C');
                 $pdf->Cell(35, 7, $d['id_barang_masuk'], 1, 0, 'C');
                 $pdf->Cell(55, 7, $d['nama_barang'], 1, 0, 'L');
-                $pdf->Cell(40, 7, $d['nama_supplier'], 1, 0, 'L');
                 $pdf->Cell(30, 7, $d['jumlah_masuk'] . ' ' . $d['nama_satuan'], 1, 0, 'C');
+                $pdf->Cell(40, 7, $d['nama_supplier'], 1, 0, 'L');
                 $pdf->Ln();
             } else :
             $pdf->Cell(10, 7, 'No.', 1, 0, 'C');
             $pdf->Cell(25, 7, 'Tgl Keluar', 1, 0, 'C');
-            $pdf->Cell(35, 7, 'ID Transaksi', 1, 0, 'C');
-            $pdf->Cell(95, 7, 'Nama Barang', 1, 0, 'C');
+            $pdf->Cell(35, 7, 'No Pengeluaran', 1, 0, 'C');
+            $pdf->Cell(55, 7, 'Nama Barang', 1, 0, 'C');
             $pdf->Cell(30, 7, 'Jumlah Keluar', 1, 0, 'C');
+            $pdf->Cell(40, 7, 'Bidang', 1, 0, 'C');
             $pdf->Ln();
 
             $no = 1;
@@ -87,8 +88,9 @@ class Laporan extends CI_Controller
                 $pdf->Cell(10, 7, $no++ . '.', 1, 0, 'C');
                 $pdf->Cell(25, 7, $d['tanggal_keluar'], 1, 0, 'C');
                 $pdf->Cell(35, 7, $d['id_barang_keluar'], 1, 0, 'C');
-                $pdf->Cell(95, 7, $d['nama_barang'], 1, 0, 'L');
+                $pdf->Cell(55, 7, $d['nama_barang'], 1, 0, 'L');
                 $pdf->Cell(30, 7, $d['jumlah_keluar'] . ' ' . $d['nama_satuan'], 1, 0, 'C');
+                $pdf->Cell(40, 7, $d['nama_bidang'], 1, 0, 'L');
                 $pdf->Ln();
             }
         endif;
