@@ -1,33 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.9.0.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Jan 08, 2020 at 03:09 PM
--- Server version: 10.4.6-MariaDB
--- PHP Version: 7.1.31
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `ci_barang`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `barang`
---
-
 CREATE TABLE `barang` (
   `id_barang` char(7) NOT NULL,
   `nama_barang` varchar(255) NOT NULL,
@@ -60,7 +30,7 @@ CREATE TABLE `barang_keluar` (
   `bidang_id` int(5) NOT NULL,
   `tanggal_keluar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
+w
 --
 -- Dumping data for table `barang_keluar`
 --
@@ -153,6 +123,28 @@ INSERT INTO `jenis` (`id_jenis`, `nama_jenis`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mutasi`
+--
+
+CREATE TABLE `mutasi` (
+  `id` int(5) NOT NULL,
+  `barang_id` varchar(10) DEFAULT NULL,
+  `tanggal_mutasi` date DEFAULT NULL,
+  `jumlah_mutasi` int(11) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `keterangan` longtext
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mutasi`
+--
+
+INSERT INTO `mutasi` (`id`, `barang_id`, `tanggal_mutasi`, `jumlah_mutasi`, `user_id`, `keterangan`) VALUES
+(3, 'B000002', '2020-01-16', 10, 1, 'kete');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `pemeliharaan`
 --
 
@@ -167,6 +159,13 @@ CREATE TABLE `pemeliharaan` (
   `user_id` int(5) NOT NULL,
   `keterangan` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pemeliharaan`
+--
+
+INSERT INTO `pemeliharaan` (`id`, `barang_id`, `jenis`, `supplier_id`, `tanggal_pemeliharaan`, `biaya`, `no_pemeliharaan`, `user_id`, `keterangan`) VALUES
+(4, 'B000001', 'Ringan', 1, '2020-01-16', 100000, '123456', 1, 'rusak');
 
 -- --------------------------------------------------------
 
@@ -206,9 +205,26 @@ CREATE TABLE `supplier` (
 --
 
 INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `no_telp`, `alamat`) VALUES
-(1, 'Ahmad Hasanudin', '085688772971', 'Kec. Cigudeg, Bogor - Jawa Barat'),
-(2, 'Asep Salahudin', '081341879246', 'Kec. Ciampea, Bogor - Jawa Barat'),
-(3, 'Filo Lial', '087728164328', 'Kec. Ciomas, Bogor - Jawa Barat');
+(1, 'Supplier 1', '08123678764', 'Kec. Banjarmasin Utara - Kalimantan Selatan');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `ttd`
+--
+
+CREATE TABLE `ttd` (
+  `id` int(5) NOT NULL,
+  `nama_kepala` varchar(100) DEFAULT NULL,
+  `nip` int(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ttd`
+--
+
+INSERT INTO `ttd` (`id`, `nama_kepala`, `nip`) VALUES
+(1, 'Kepala Dinas 1', 1920202020);
 
 -- --------------------------------------------------------
 
@@ -235,9 +251,6 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `nama`, `username`, `email`, `no_telp`, `role`, `password`, `created_at`, `foto`, `is_active`) VALUES
 (1, 'Adminisitrator', 'admin', 'admin@admin.com', '025123456789', 'admin', '$2y$10$wMgi9s3FEDEPEU6dEmbp8eAAEBUXIXUy3np3ND2Oih.MOY.q/Kpoy', 1568689561, 'd5f22535b639d55be7d099a7315e1f7f.png', 1),
-(7, 'Arfan ID', 'arfandotid', 'arfandotid@gmail.com', '081221528805', 'gudang', '$2y$10$5es8WhFQj8xCmrhDtH86Fu71j97og9f8aR4T22soa7716kAusmaeK', 1568691611, 'user.png', 1),
-(8, 'Muhammad Ghifari Arfananda', 'mghifariarfan', 'mghifariarfan@gmail.com', '085697442673', 'gudang', '$2y$10$5SGUIbRyEXH7JslhtEegEOpp6cvxtK6X.qdiQ1eZR7nd0RZjjx3qe', 1568691629, 'user.png', 1),
-(13, 'Arfan Kashilukato', 'arfankashilukato', 'arfankashilukato@gmail.com', '081623123181', 'gudang', '$2y$10$/QpTunAD9alBV5NSRJ7ytupS2ibUrbmS3ia3u5B26H6f3mCjOD92W', 1569192547, 'user.png', 1),
 (14, 'Kamal', 'kamal', 'kamalmustapa@gmail.com', '082237755772', 'gudang', '$2y$10$PMyJHBnVyoVm3hqMm/KofuxuyDazWtgFpmcPzSaSFofl/fEfxIghi', 1578478292, 'user.png', 0);
 
 --
@@ -282,6 +295,12 @@ ALTER TABLE `jenis`
   ADD PRIMARY KEY (`id_jenis`);
 
 --
+-- Indexes for table `mutasi`
+--
+ALTER TABLE `mutasi`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pemeliharaan`
 --
 ALTER TABLE `pemeliharaan`
@@ -298,6 +317,12 @@ ALTER TABLE `satuan`
 --
 ALTER TABLE `supplier`
   ADD PRIMARY KEY (`id_supplier`);
+
+--
+-- Indexes for table `ttd`
+--
+ALTER TABLE `ttd`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -334,22 +359,34 @@ ALTER TABLE `jenis`
   MODIFY `id_jenis` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `mutasi`
+--
+ALTER TABLE `mutasi`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `pemeliharaan`
 --
 ALTER TABLE `pemeliharaan`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `satuan`
 --
 ALTER TABLE `satuan`
-  MODIFY `id_satuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_satuan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `supplier`
 --
 ALTER TABLE `supplier`
   MODIFY `id_supplier` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `ttd`
+--
+ALTER TABLE `ttd`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
@@ -383,7 +420,3 @@ ALTER TABLE `barang_masuk`
   ADD CONSTRAINT `barang_masuk_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `supplier` (`id_supplier`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `barang_masuk_ibfk_3` FOREIGN KEY (`barang_id`) REFERENCES `barang` (`id_barang`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
