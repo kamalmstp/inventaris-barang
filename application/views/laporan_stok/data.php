@@ -46,7 +46,7 @@
                             <td><?= $bm['nama_barang']; ?></td>
                             <td><?= $bm['nama_jenis']; ?></td>
                             <td><?= $bm['nama_satuan']; ?></td>
-                            <td><?= $bm['harga']; ?></td>
+                            <td><?= "Rp. ".number_format($bm['harga'],2,',','.'); ?></td>
                             <td><?= $masuk->total_masuk; ?></td>
                             <td><?= $keluar->total_keluar; ?></td>
                             <td><?= $bm['stok']; ?></td>

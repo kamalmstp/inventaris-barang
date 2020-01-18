@@ -93,6 +93,14 @@ class Admin_model extends CI_Model
         return $this->db->get('barang_keluar bk')->result_array();
     }
 
+    public function getMutasi($limit = null, $id_barang = null, $range = null)
+    {
+        $this->db->select('*');
+        $this->db->join('barang b', 'm.barang_id = b.id_barang');
+        $this->db->order_by('tanggal_mutasi', 'DESC');
+        return $this->db->get('mutasi m')->result_array();
+    }
+
     public function getPemeliharaan($limit = null, $id_barang = null, $range = null)
     {
         $this->db->select('*');

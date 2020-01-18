@@ -45,7 +45,7 @@
                           <td><?= $bm['nama_barang']; ?></td>
                           <td><?= $bm['jenis']; ?></td>
                           <td><?= $bm['nama_supplier']; ?></td>
-                          <td><?= $bm['biaya']; ?></td>
+                          <td><?= "Rp. ".number_format($bm['biaya'],2,',','.'); ?></td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else : ?>

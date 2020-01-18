@@ -76,5 +76,5 @@ class Bidang extends CI_Controller
             set_pesan('data gagal dihapus.', false);
         }
         redirect('bidang');
-    }
+    }    
 }

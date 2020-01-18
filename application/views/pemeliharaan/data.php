@@ -46,7 +46,7 @@
                             <td><?= $bm['nama_barang']; ?></td>
                             <td><?= $bm['jenis']; ?></td>
                             <td><?= $bm['nama_supplier']; ?></td>
-                            <td><?= $bm['biaya']; ?></td>
+                            <td><?= "Rp. ".number_format($bm['biaya'],2,',','.'); ?></td>
                             <td>
                                 <a onclick="return confirm('Yakin ingin hapus?')" href="<?= base_url('pemeliharaan/delete/') . $bm['id'] ?>" class="btn btn-danger btn-circle btn-sm"><i class="fa fa-trash"></i></a>
                             </td>

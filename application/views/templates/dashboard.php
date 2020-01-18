@@ -72,11 +72,24 @@
                     <span>Supplier</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a class="nav-link pb-0" href="<?= base_url('bidang'); ?>">
                     <i class="fas fa-fw fa-users"></i>
-                    <span>Data Bidang</span>
+                    <span>Data Instansi</span>
                 </a>
+            </li> -->
+            <li class="nav-item">
+                <a class="nav-link pb-0 collapsed " href="#" data-toggle="collapse" data-target="#collapseInstansi" aria-expanded="true" aria-controls="collapseMaster">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Data Instansi</span>
+                </a>
+                <div id="collapseInstansi" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-light py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">Master Data:</h6>
+                        <a class="collapse-item" href="<?= base_url('bidang'); ?>">Data Bidang</a>
+                        <a class="collapse-item" href="<?= base_url('kepala'); ?>">Data Pimpinan</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -116,6 +129,13 @@
                 <a class="nav-link" href="<?= base_url('barangkeluar'); ?>">
                     <i class="fas fa-fw fa-upload"></i>
                     <span>Barang Keluar</span>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link pb-0" href="<?= base_url('mutasi'); ?>">
+                    <i class="fas fa-fw fa-download"></i>
+                    <span>Mutasi Barang</span>
                 </a>
             </li>
 
